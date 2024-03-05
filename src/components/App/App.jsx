@@ -1,41 +1,52 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
 
-import ContactsForm from 'components/ContactsForm';
-import ContactsFilter from 'components/ContactsFilter';
-import ContactsList from 'components/ContactsList';
-import Loader from 'components/Loader';
-import { selectContacts, selectIsLoading } from '../../redux/selectors';
-import { fetchContacts } from '../../redux/operations';
-import { Container, Wrapper, Title } from './App.styled';
+// import ContactsForm from 'components/ContactsForm';
+// import ContactsFilter from 'components/ContactsFilter';
+// import ContactsList from 'components/ContactsList';
+// import Loader from 'components/Loader';
+// import { Container, Wrapper, Title } from './App.styled';
+// import { selectContacts, selectIsLoading } from '../../redux/selectors';
+// import { fetchContacts } from '../../redux/operations';
+
+const HomePage = lazy(() => import('../../pages/HomePage'));
+const LoginPage = lazy(() => import('../../pages/LoginPage'));
 
 const App = () => {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
+  // const contacts = useSelector(selectContacts);
+  // const isLoading = useSelector(selectIsLoading);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
-    <Container>
-      <Title>Phonebook</Title>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </>
 
-      <Wrapper>
-        <Loader isLoading={isLoading} />
-      </Wrapper>
+    // <Container>
+    //   <Title>Phonebook</Title>
 
-      <ContactsForm />
+    //   <Wrapper>
+    //     <Loader isLoading={isLoading} />
+    //   </Wrapper>
 
-      {contacts.length > 0 && (
-        <Wrapper>
-          <Title>Contacts</Title>
-          <ContactsFilter />
-          <ContactsList />
-        </Wrapper>
-      )}
-    </Container>
+    //   <ContactsForm />
+
+    //   {contacts.length > 0 && (
+    //     <Wrapper>
+    //       <Title>Contacts</Title>
+    //       <ContactsFilter />
+    //       <ContactsList />
+    //     </Wrapper>
+    //   )}
+    // </Container>
   );
 };
 

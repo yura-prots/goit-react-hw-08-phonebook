@@ -17,6 +17,8 @@ const contactSchema = Yup.object().shape({
 const LoginPage = () => {
   return (
     <>
+      <h2>Login Page</h2>
+
       <Formik
         initialValues={{
           email: '',
