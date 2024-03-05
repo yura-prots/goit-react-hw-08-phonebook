@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import App from 'components/App';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { store } from './redux/store.js';
+import { BrowserRouter } from 'react-router-dom';
 
 const theme = {
   colors: {
@@ -23,11 +24,13 @@ const theme = {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <ToastContainer />
-        <App />
-      </ThemeProvider>
+      <BrowserRouter basename="goit-react-hw-08-phonebook">
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <ToastContainer />
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

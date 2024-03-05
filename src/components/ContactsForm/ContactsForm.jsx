@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
-import { toast } from 'react-toastify';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 import { addContact } from '../../redux/operations';
 import { selectContacts } from '../../redux/selectors';
