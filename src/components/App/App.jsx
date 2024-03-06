@@ -1,3 +1,4 @@
+import Layout from 'components/Layout';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
@@ -26,9 +27,13 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Route>
+
+        <Route path="*" element={<HomePage />} />
       </Routes>
     </>
 
