@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import App from 'components/App';
 import { GlobalStyles } from './styles/GlobalStyles';
-import { store } from './redux/store.js';
-import { BrowserRouter } from 'react-router-dom';
+import { persistor, store } from './redux/store.js';
 
 const theme = {
   colors: {
@@ -24,13 +25,15 @@ const theme = {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="goit-react-hw-08-phonebook">
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <ToastContainer />
-          <App />
-        </ThemeProvider>
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter basename="goit-react-hw-08-phonebook">
+          <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <ToastContainer />
+            <App />
+          </ThemeProvider>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
