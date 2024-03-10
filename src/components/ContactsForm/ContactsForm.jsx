@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
 import { addContact } from '../../redux/operations';
-import { selectContacts } from '../../redux/selectors';
+import { selectContacts } from '../../redux/contacts/selector';
 import {
   Form,
   FormGroup,

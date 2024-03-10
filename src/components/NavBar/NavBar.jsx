@@ -1,6 +1,6 @@
-import { Link } from './AppBar.styled';
+import { Link } from './NavBar.styled';
 
-const AppBar = () => {
+const NavBar = () => {
   return (
     <nav>
       <Link to="/">Home</Link>
@@ -10,4 +10,4 @@ const AppBar = () => {
   );
 };
 
-export default AppBar;
+export default NavBar;
