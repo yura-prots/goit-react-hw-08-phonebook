@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
-import { addContact } from '../../redux/operations';
+import { addContact } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/contacts/selector';
 import {
   Form,
