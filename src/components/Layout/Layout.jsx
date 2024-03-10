@@ -2,17 +2,14 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Loader from 'components/Loader';
-import { Container, Header, Link } from './Layout.styled';
+import { Container, Header } from './Layout.styled';
+import AppBar from 'components/AppBar';
 
 const Layout = () => {
   return (
     <Container>
       <Header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
-        </nav>
+        <AppBar />
       </Header>
 
       <main>
