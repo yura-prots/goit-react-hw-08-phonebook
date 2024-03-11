@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -8,6 +9,7 @@ import {
   ErrorMessage,
   Button,
 } from './RegisterPage.styled';
+import { register } from '../../redux/auth/operations';
 
 const registrationSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').required('Required'),
@@ -16,6 +18,13 @@ const registrationSchema = Yup.object().shape({
 });
 
 const RegisterPage = () => {
+  const dispatch = useDispatch();
+
+  const onFormSubmit = (values, actions) => {
+    dispatch(register(values));
+    actions.resetForm();
+  };
+
   return (
     <>
       <h2>Register Page</h2>
@@ -27,6 +36,7 @@ const RegisterPage = () => {
           password: '',
         }}
         validationSchema={registrationSchema}
+        onSubmit={onFormSubmit}
       >
         <Form autoComplete="off">
           <FormGroup>
