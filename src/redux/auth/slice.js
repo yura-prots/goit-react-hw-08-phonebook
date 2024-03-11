@@ -4,7 +4,7 @@ import { register } from './operations';
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: null, email: null },
+    user: {},
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
