@@ -14,7 +14,7 @@ import { register } from '../../redux/auth/operations';
 const registrationSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string().min(1, 'Too Short!').required('Required'),
+  password: Yup.string().min(7, 'Too Short!').required('Required'),
 });
 
 const RegisterPage = () => {
