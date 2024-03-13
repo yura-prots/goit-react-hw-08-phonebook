@@ -1,5 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register } from './operations';
+import { logIn, register } from './operations';
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+const signUpBuilder = builder => {
+  builder
+    .addCase(register.pending, handlePending)
+    .addCase(register.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    })
+    .addCase(register.rejected, handleRejected);
+};
+
+const logInBuilder = builder => {
+  builder
+    .addCase(logIn.pending, handlePending)
+    .addCase(logIn.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    })
+    .addCase(logIn.rejected, handleRejected);
+};
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -12,13 +45,8 @@ export const authSlice = createSlice({
     error: null,
   },
   extraReducers: builder => {
-    builder
-      .addCase(register.pending, (state, action) => state)
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(register.rejected, (state, action) => state);
+    signUpBuilder(builder);
+
+    logInBuilder(builder);
   },
 });
