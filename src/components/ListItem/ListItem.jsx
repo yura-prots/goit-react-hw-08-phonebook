@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
 import { Item, DeleteBtn } from './ListItem.styled';
 
-const ListItem = ({ contact: { id, name, phone } }) => {
+const ListItem = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();
 
   return (
     <Item>
       <span>{name}:</span>
-      <span>{phone}</span>
+      <span>{number}</span>
       <DeleteBtn type="button" onClick={() => dispatch(deleteContact(id))}>
         Delete
       </DeleteBtn>
@@ -23,7 +23,7 @@ ListItem.propTypes = {
     createdAt: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
   }).isRequired,
 };
 

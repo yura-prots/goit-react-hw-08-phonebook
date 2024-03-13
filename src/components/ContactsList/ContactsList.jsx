@@ -6,6 +6,7 @@ import { List } from './ContactsList.styled';
 
 const ContactsList = () => {
   const visibleContacts = useSelector(selectVisibleContacts);
+  console.log(visibleContacts);
 
   return (
     <div>

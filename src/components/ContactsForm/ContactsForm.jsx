@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 import { addContact } from '../../redux/contacts/operations';
-import { selectContacts } from '../../redux/contacts/selector';
+// import { selectContacts } from '../../redux/contacts/selector';
 import {
   Form,
   FormGroup,
@@ -15,22 +15,22 @@ import {
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').required('Required'),
-  phone: Yup.string().min(6, 'Too Short!').required('Required'),
+  number: Yup.string().min(6, 'Too Short!').required('Required'),
 });
 
 const ContactsForm = () => {
-  const contacts = useSelector(selectContacts);
+  // const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const onFormSubmit = (values, actions) => {
-    const nameToAdd = values.name.toLowerCase();
-    const nameInList = contacts.find(contact => {
-      return contact.name.toLowerCase() === nameToAdd;
-    });
+    // const nameToAdd = values.name.toLowerCase();
+    // const nameInList = contacts.find(contact => {
+    //   return contact.name.toLowerCase() === nameToAdd;
+    // });
 
-    if (nameInList) {
-      return toast.info(`Contact ${nameToAdd} in the list`);
-    }
+    // if (nameInList) {
+    //   return toast.info(`Contact ${nameToAdd} in the list`);
+    // }
 
     dispatch(addContact(values));
     actions.resetForm();
@@ -41,7 +41,7 @@ const ContactsForm = () => {
       <Formik
         initialValues={{
           name: '',
-          phone: '',
+          number: '',
         }}
         validationSchema={contactSchema}
         onSubmit={onFormSubmit}
@@ -55,8 +55,8 @@ const ContactsForm = () => {
 
           <FormGroup>
             Phone
-            <Field id="phone" type="tel" name="phone" required />
-            <ErrorMessage name="phone" component="span" />
+            <Field id="number" type="text" name="number" required />
+            <ErrorMessage name="number" component="span" />
           </FormGroup>
 
           <Button type="submit">Add contact</Button>

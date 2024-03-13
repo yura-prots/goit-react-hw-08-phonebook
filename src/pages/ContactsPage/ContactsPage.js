@@ -11,6 +11,7 @@ import { fetchContacts } from '../../redux/contacts/operations';
 
 const ContactsPage = () => {
   const contacts = useSelector(selectContacts);
+  console.log(contacts);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
