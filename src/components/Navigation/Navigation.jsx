@@ -1,20 +1,20 @@
 import { useAuth } from 'hooks/useAuth';
-import { Link } from './NavBar.styled';
+import { Link } from './Navigation.styled';
 import UserMenu from 'components/UserMenu';
 import AuthBar from 'components/AuthBar';
 
-const NavBar = () => {
+const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/register">Register</Link>
-      <Link to="/login">Login</Link>
 
       {isLoggedIn ? <UserMenu /> : <AuthBar />}
+
+      {isLoggedIn && <Link to="/contacts">Contacts</Link>}
     </nav>
   );
 };
 
-export default NavBar;
+export default Navigation;

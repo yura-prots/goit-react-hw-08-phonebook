@@ -6,7 +6,7 @@ const UserMenu = () => {
 
   return (
     <>
-      <p>Welcome, {user.name}</p>
+      <p>{user.email}</p>
 
       <Button>Log Out</Button>
     </>

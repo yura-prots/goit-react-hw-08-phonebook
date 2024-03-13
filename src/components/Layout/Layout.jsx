@@ -3,13 +3,13 @@ import { Outlet } from 'react-router-dom';
 
 import Loader from 'components/Loader';
 import { Container, Header } from './Layout.styled';
-import NavBar from 'components/NavBar';
+import Navigation from 'components/Navigation';
 
 const Layout = () => {
   return (
     <Container>
       <Header>
-        <NavBar />
+        <Navigation />
       </Header>
 
       <main>
