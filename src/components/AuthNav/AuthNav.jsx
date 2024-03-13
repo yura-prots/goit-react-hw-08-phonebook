@@ -1,6 +1,6 @@
-import { Link } from './AuthBar.styled';
+import { Link } from './AuthNav.styled';
 
-const AuthBar = () => {
+const AuthNav = () => {
   return (
     <>
       <Link to="/register">Register</Link>
@@ -9,4 +9,4 @@ const AuthBar = () => {
   );
 };
 
-export default AuthBar;
+export default AuthNav;
