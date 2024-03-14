@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Layout from 'components/Layout';
 import PublicRoute from 'components/PublicRoute';
+import PrivateRoute from 'components/PrivateRoute';
 import { refreshUser } from '../../redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 
@@ -39,7 +40,12 @@ const App = () => {
               <PublicRoute component={RegisterPage} redirectTo="/contacts" />
             }
           />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute component={ContactsPage} redirectTo="/login" />
+            }
+          />
         </Route>
 
         <Route path="*" element={<HomePage />} />
