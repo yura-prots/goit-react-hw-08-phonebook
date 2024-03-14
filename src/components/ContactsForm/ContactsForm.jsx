@@ -1,10 +1,10 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { addContact } from '../../redux/contacts/operations';
-// import { selectContacts } from '../../redux/contacts/selector';
+import { selectContacts } from '../../redux/contacts/selector';
 import {
   Form,
   FormGroup,
@@ -19,18 +19,18 @@ const contactSchema = Yup.object().shape({
 });
 
 const ContactsForm = () => {
-  // const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const onFormSubmit = (values, actions) => {
-    // const nameToAdd = values.name.toLowerCase();
-    // const nameInList = contacts.find(contact => {
-    //   return contact.name.toLowerCase() === nameToAdd;
-    // });
+    const nameToAdd = values.name.toLowerCase();
+    const nameInList = contacts.find(contact => {
+      return contact.name.toLowerCase() === nameToAdd;
+    });
 
-    // if (nameInList) {
-    //   return toast.info(`Contact ${nameToAdd} in the list`);
-    // }
+    if (nameInList) {
+      return toast.info(`Contact ${nameToAdd} in the list`);
+    }
 
     dispatch(addContact(values));
     actions.resetForm();

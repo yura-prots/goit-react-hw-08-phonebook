@@ -4,15 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContactsForm from 'components/ContactsForm';
 import ContactsFilter from 'components/ContactsFilter';
 import ContactsList from 'components/ContactsList';
-import Loader from 'components/Loader';
+// import Loader from 'components/Loader';
 import { Container, Wrapper, Title } from './ContactsPage.styled';
-import { selectContacts, selectIsLoading } from '../../redux/contacts/selector';
+import { selectContacts } from '../../redux/contacts/selector';
 import { fetchContacts } from '../../redux/contacts/operations';
 
 const ContactsPage = () => {
   const contacts = useSelector(selectContacts);
-  console.log(contacts);
-  const isLoading = useSelector(selectIsLoading);
+  // const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,9 +22,7 @@ const ContactsPage = () => {
     <Container>
       <Title>Phonebook</Title>
 
-      <Wrapper>
-        <Loader isLoading={isLoading} />
-      </Wrapper>
+      <Wrapper>{/* <Loader isLoading={isLoading} /> */}</Wrapper>
 
       <ContactsForm />
 

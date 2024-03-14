@@ -1,6 +1,10 @@
-import Layout from 'components/Layout';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+
+import Layout from 'components/Layout';
+import { refreshUser } from '../../redux/auth/operations';
+import { useAuth } from 'hooks/useAuth';
 
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
@@ -8,7 +12,16 @@ const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
 const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    'Fetching user data...'
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
