@@ -7,7 +7,6 @@ import { Item, DeleteBtn } from './ListItem.styled';
 
 const ListItem = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();
-
   const onDeleteContact = (id, name) => {
     dispatch(deleteContact(id));
     toast.info(`Contact ${name} deleted from list`);

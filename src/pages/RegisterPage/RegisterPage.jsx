@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 import {
   Form,
@@ -22,6 +23,7 @@ const RegisterPage = () => {
 
   const onFormSubmit = (values, actions) => {
     dispatch(register(values));
+    toast.info(`Welcome ${values.name}`);
     actions.resetForm();
   };
 

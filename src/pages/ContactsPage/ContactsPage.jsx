@@ -2,16 +2,16 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { DotLoader } from 'react-spinners';
 
+import { fetchContacts } from '../../redux/contacts/operations';
+import { useContacts } from 'hooks/useContacts';
 import ContactsForm from 'components/ContactsForm';
 import ContactsFilter from 'components/ContactsFilter';
 import ContactsList from 'components/ContactsList';
 import { Container, Wrapper, Title } from './ContactsPage.styled';
-import { fetchContacts } from '../../redux/contacts/operations';
-import { useContacts } from 'hooks/useContacts';
 
 const ContactsPage = () => {
-  const { contacts, isLoading } = useContacts();
   const dispatch = useDispatch();
+  const { contacts, isLoading } = useContacts();
 
   useEffect(() => {
     dispatch(fetchContacts());
