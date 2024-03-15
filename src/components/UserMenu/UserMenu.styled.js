@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
+export const UserName = styled.span`
+  margin-right: 15px;
+  font-size: 22px;
+  color: #1976d2;
+`;
+
 export const Button = styled.button`
   display: block;
   padding: 8px;
