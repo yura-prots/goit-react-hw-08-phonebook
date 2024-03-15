@@ -1,17 +1,16 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { DotLoader } from 'react-spinners';
 
 import ContactsForm from 'components/ContactsForm';
 import ContactsFilter from 'components/ContactsFilter';
 import ContactsList from 'components/ContactsList';
-// import Loader from 'components/Loader';
 import { Container, Wrapper, Title } from './ContactsPage.styled';
-import { selectContacts } from '../../redux/contacts/selector';
 import { fetchContacts } from '../../redux/contacts/operations';
+import { useContacts } from 'hooks/useContacts';
 
 const ContactsPage = () => {
-  const contacts = useSelector(selectContacts);
-  // const isLoading = useSelector(selectIsLoading);
+  const { contacts, isLoading } = useContacts();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +21,15 @@ const ContactsPage = () => {
     <Container>
       <Title>Phonebook</Title>
 
-      <Wrapper>{/* <Loader isLoading={isLoading} /> */}</Wrapper>
+      <Wrapper>
+        <DotLoader
+          color={'#5febf9'}
+          loading={isLoading}
+          size={40}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </Wrapper>
 
       <ContactsForm />
 

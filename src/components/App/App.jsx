@@ -22,7 +22,7 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'Fetching user data...'
+    <b>Refreshing user...</b>
   ) : (
     <>
       <Routes>

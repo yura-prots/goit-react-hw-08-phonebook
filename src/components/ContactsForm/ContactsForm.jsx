@@ -33,6 +33,7 @@ const ContactsForm = () => {
     }
 
     dispatch(addContact(values));
+    toast.info(`Contact ${nameToAdd} added to list`);
     actions.resetForm();
   };
 

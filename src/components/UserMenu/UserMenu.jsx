@@ -12,7 +12,7 @@ const UserMenu = () => {
 
   return (
     <>
-      <p>{user.email}</p>
+      <p>{user.name}</p>
 
       <Button type="button" onClick={handleLogOut}>
         Log Out
