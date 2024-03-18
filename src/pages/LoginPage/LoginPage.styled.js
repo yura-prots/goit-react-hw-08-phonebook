@@ -5,6 +5,22 @@ import {
   ErrorMessage as FormikError,
 } from 'formik';
 
+export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 150px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+`;
+
 export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;

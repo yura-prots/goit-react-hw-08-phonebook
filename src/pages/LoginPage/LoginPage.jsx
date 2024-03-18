@@ -8,6 +8,7 @@ import {
   Field,
   ErrorMessage,
   Button,
+  Wrapper,
 } from './LoginPage.styled';
 import { logIn } from '../../redux/auth/operations';
 
@@ -25,9 +26,7 @@ const LoginPage = () => {
   };
 
   return (
-    <>
-      <h2>Login Page</h2>
-
+    <Wrapper>
       <Formik
         initialValues={{
           email: '',
@@ -52,7 +51,7 @@ const LoginPage = () => {
           <Button type="submit">Login</Button>
         </Form>
       </Formik>
-    </>
+    </Wrapper>
   );
 };
 

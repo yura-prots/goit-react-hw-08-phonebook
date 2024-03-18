@@ -9,6 +9,7 @@ import {
   Field,
   ErrorMessage,
   Button,
+  Wrapper,
 } from './RegisterPage.styled';
 import { register } from '../../redux/auth/operations';
 
@@ -28,9 +29,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <>
-      <h2>Register Page</h2>
-
+    <Wrapper>
       <Formik
         initialValues={{
           name: '',
@@ -62,7 +61,7 @@ const RegisterPage = () => {
           <Button type="submit">Register</Button>
         </Form>
       </Formik>
-    </>
+    </Wrapper>
   );
 };
 
