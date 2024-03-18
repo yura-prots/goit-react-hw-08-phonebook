@@ -6,16 +6,18 @@ export const Wrapper = styled.div`
   gap: 12px;
 `;
 
-export const UserName = styled.span`
-  margin-right: 15px;
+export const Greeting = styled.div`
   font-size: 22px;
-  color: #1976d2;
+`;
+
+export const UserName = styled.span`
+  color: ${p => p.theme.colors.tomato};
 `;
 
 export const Button = styled.button`
   display: block;
   padding: 8px;
-  min-width: 50px;
+  min-width: 100px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 14px;
@@ -27,7 +29,7 @@ export const Button = styled.button`
     color 250ms ease-in-out;
 
   &:hover {
-    box-shadow: 0px 0px 10px 0px ${p => p.theme.colors.green};
+    box-shadow: 0px 0px 10px 0px ${p => p.theme.colors.tomato};
     transform: scale(1.1);
   }
 `;
